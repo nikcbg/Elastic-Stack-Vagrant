@@ -128,4 +128,3 @@ elif [ "$(grep -Ei 'fedora|redhat|centos' /etc/*release)" ]
 else
     echo "This script doesn't support ELK installation on this OS."
 fi
-nikolay@hp scripts $ 
