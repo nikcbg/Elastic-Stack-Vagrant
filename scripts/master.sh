@@ -40,29 +40,6 @@ dependency_check_rpm() {
     fi
 }
 
-debian_elk() {
-    # resynchronize the package index files from their sources.
-    #sudo apt-get update
-    # Downloading debian package of elasticsearch
-    sudo wget --directory-prefix=/tmp/ https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
-    # Install debian package of elasticsearch
-    sudo dpkg -i /tmp/elasticsearch-6.2.4.deb
-    # Downloading debian package of logstash
-    sudo wget --directory-prefix=/tmp/ https://artifacts.elastic.co/downloads/logstash/logstash-6.2.4.deb
-    # Install logstash debian package
-    sudo dpkg -i /tmp/logstash-6.2.4.deb
-    # install kibana
-    #sudo apt-get install apt-transport-https
-    sudo wget --directory-prefix=/tmp/ https://artifacts.elastic.co/downloads/kibana/kibana-6.2.4-amd64.deb
-    sudo dpkg -i /tmp/kibana-6.2.4-amd64.deb
-    # Starting The Services
-    sudo systemctl restart elasticsearch
-    sudo systemctl enable elasticsearch
-    sudo systemctl restart logstash
-    sudo systemctl enable logstash
-    sudo systemctl restart kibana
-    sudo systemctl enable kibana
-}
 
 rpm_elk() {
     #Installing wget.
@@ -99,16 +76,6 @@ firewall_elk_rpm() {
     #Test APP
     curl -X GET http://localhost:9200
     curl -X GET http://localhost:5601
-}
-
-firewall_elk_deb() {
-    #Setup firewall rules
-    sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 5601 -j ACCEPT 
-    sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 9200 -j ACCEPT
-    sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 9300 -j ACCEPT 
-    sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 5044 -j ACCEPT
-    sudo service iptables save
-    sudo service iptables restart
 }
 
 # Installing ELK Stack
