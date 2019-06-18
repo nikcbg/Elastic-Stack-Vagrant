@@ -1,13 +1,26 @@
 #Edit data node elasticsearch configurations: 
-sudo vim /etc/elasticsearch/elasticsearch.yml 
-node.name: masternode.name: node 
-node.master: false 
-network.host: ["localhost", "192.168.1.11"] 
-discovery.zen.ping.unicast.hosts: ["192.168.1.10"] 
+#sudo vim /etc/elasticsearch/elasticsearch.yml 
+#node.name: masternode.name: node 
+#node.master: false 
+#network.host: ["localhost", "192.168.1.11"] 
+#discovery.zen.ping.unicast.hosts: ["192.168.1.10"] 
 
 #Edit data node filebeat configurations: 
-vim /etc/filebeat/filebeat.yml  
-output.elasticsearch: #comment out 
-hosts: ["localhost:9200"]  #comment out  
-output.logstash:  # uncomment 
-hosts: ["localhost:5044"] #uncomment 
+#vim /etc/filebeat/filebeat.yml  
+#output.elasticsearch: - comment out 
+#hosts: ["localhost:9200"]  - comment out  
+#output.logstash: - uncomment 
+#hosts: ["localhost:5044"] - uncomment
+
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log
+
+output.elasticsearch:
+  hosts: ["192.168.1.11:9200"]
+setup.kibana:
+  host: "192.168.1.10:5601"
+
