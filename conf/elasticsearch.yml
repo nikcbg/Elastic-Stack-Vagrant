@@ -1,5 +1,5 @@
 #Edit master node elasticsearch configurations: 
-sudo vim /etc/elasticsearch/elasticsearch.yml 
-node.name: master
-node.data: false 
-network.host: ["localhost", "192.168.1.10"] 
+#sudo vim /etc/elasticsearch/elasticsearch.yml 
+#node.name: master
+#node.data: false 
+#network.host: ["localhost", "192.168.1.10"] 
