@@ -19,6 +19,6 @@ filebeat.inputs:
   paths:
     - /var/log/*.log
 
-output.elasticsearch:
-  hosts: ["192.168.1.11:9200"]
+output.logstash:
+  hosts: ["192.168.1.10:9200"]
 
