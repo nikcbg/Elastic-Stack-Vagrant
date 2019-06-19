@@ -58,18 +58,4 @@ firewall_elk_rpm() {
     curl -X GET http://localhost:5601
 }
 
-# Installing ELK Stack
-#if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]
-  #     echo " It's a Debian based system"
-     #   dependency_check_deb
-      #  debian_elk
 
-
-#elif [ "$(grep -Ei 'fedora|redhat|centos' /etc/*release)" ]
-   # then
-      #  echo "It's a RedHat based system."
-       # dependency_check_rpm
-       # rpm_elk
-#else
-    #echo "This script doesn't support ELK installation on this OS."
-#fi
